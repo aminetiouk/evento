@@ -1,7 +1,7 @@
-"use client"
-import Lottie from "lottie-react";
-import logoAnimation from "../../animations/logoAnimation.json";
+import Image from "next/image";
 
 export default function Logo() {
-  return <Lottie animationData={logoAnimation} loop={true} style={{ width: 150,}} />;
+  return (
+    <Image src="/logoEvento.png" alt="Evento logo" width={120} height={0}/>
+  );
 }
