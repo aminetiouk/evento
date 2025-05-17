@@ -1,12 +1,33 @@
-import Link from "next/link";
-import Logo from "./Logo";
+import Link from 'next/link';
+import Logo from './Logo';
+
+const routes = [
+  {
+    name: 'Home',
+    path: '/'
+  },
+  {
+    name: 'All Events',
+    path: '/events/all'
+  }
+];
 
 export default function Header() {
   return (
-    <header>
+    <header
+      className="flex justify-between items-center h-14 px-3 sm:px-9 border-b
+        border-white/10 "
+    >
       <Logo />
-      <Link href="/">Home</Link>
-      <Link href="/events/all">All Events</Link>
+      <nav>
+        <ul className="flex gap-x-6 text-xl">
+          {routes.map(route => (
+            <li key={route.path} className='text-white/50 hover:text-white transition'>
+              <Link href={route.path}>{route.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
-  )
+  );
 }
