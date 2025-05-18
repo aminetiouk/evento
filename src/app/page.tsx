@@ -28,7 +28,7 @@ export default function Home() {
         Browse more than{" "}
         <span
           className="
-            font-bold text-green-400
+            font-bold text-accent
             italic underline
           "
         >
@@ -52,7 +52,7 @@ export default function Home() {
             text-xl
             bg-white/[7%]
             rounded-lg
-            outline-none ring-green-400/50 focus:bg-white/10 focus:ring-2
+            outline-none ring-accent/50 focus:bg-white/10 focus:ring-2
           "
         />
       </form>
