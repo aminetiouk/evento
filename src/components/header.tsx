@@ -1,17 +1,20 @@
-import Link from "next/link";
-import Logo from "./logo";
-import clsx from "clsx";
-import { usePathname } from "next/navigation";
+'use client';
+
+import Link from 'next/link';
+import Logo from './logo';
+import clsx from 'clsx';
+import { usePathname } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 const routes = [
   {
-    name: "Home",
-    path: "/",
+    name: 'Home',
+    path: '/'
   },
   {
-    name: "All Events",
-    path: "/events/all",
-  },
+    name: 'All Events',
+    path: '/events/all'
+  }
 ];
 
 export default function Header() {
@@ -29,23 +32,34 @@ export default function Header() {
       "
     >
       <Logo />
-      <nav>
+      <nav className="h-full">
         <ul
           className="
             flex
             text-xl
             gap-x-6
+            h-full
           "
         >
-          {routes.map((route) => (
+          {routes.map(route => (
             <li
               key={route.path}
-              className={clsx("transition hover:text-white", {
-                "text-white": activePathname === route.path,
-                "text-white/50": activePathname !== route.path,
-              })}
+              className={clsx(
+                'transition relative flex items-center hover:text-white',
+                {
+                  'text-white': activePathname === route.path,
+                  'text-white/50': activePathname !== route.path
+                }
+              )}
             >
               <Link href={route.path}>{route.name}</Link>
+
+              {activePathname === route.path && (
+                <motion.div
+                  layoutId="h-active-link"
+                  className="bg-accent h-1 w-full absolute bottom-0"
+                ></motion.div>
+              )}
             </li>
           ))}
         </ul>
