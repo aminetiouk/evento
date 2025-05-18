@@ -4,6 +4,7 @@
 
 @theme {
   --font-inter: 'Inter', sans-serif;
+  --color-accent: #a4f839;
 }
 
 @utility flex-center {
