@@ -13,9 +13,24 @@ const routes = [
 
 export default function Footer() {
   return (
-    <footer className="mt-auto flex justify-between items-center px-3 sm:px-9 text-base text-white/50 h-14">
-      <small>&copy; 2025 Amine. All right reserved</small>
-      <ul className='flex-center space-x-4'>
+    <footer
+      className="
+        flex
+        h-14
+        mt-auto px-3
+        text-xs sm:text-base text-white/25
+        border-t border-white/10
+        justify-between items-center
+        sm:px-9
+      "
+    >
+      <small className='text-xs'>&copy; 2025 Amine. All right reserved</small>
+      <ul
+        className="
+          flex-center
+          gap-x-3 sm:gap-x-8
+        "
+      >
         {routes.map(route => (
           <li key={route.path}>
             <Link href={route.path}>{route.name}</Link>
