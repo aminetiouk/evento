@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Logo from "./logo";
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
 
 const routes = [
   {
@@ -13,6 +15,8 @@ const routes = [
 ];
 
 export default function Header() {
+  const activePathname = usePathname();
+
   return (
     <header
       className="
@@ -36,10 +40,10 @@ export default function Header() {
           {routes.map((route) => (
             <li
               key={route.path}
-              className="
-                text-white/50
-                transition hover:text-white
-              "
+              className={clsx("transition hover:text-white", {
+                "text-white": activePathname === route.path,
+                "text-white/50": activePathname !== route.path,
+              })}
             >
               <Link href={route.path}>{route.name}</Link>
             </li>
