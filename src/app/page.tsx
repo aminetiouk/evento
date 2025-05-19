@@ -1,5 +1,6 @@
-import SearchForm from "@/components/search-form";
-import Link from "next/link";
+import H1 from '@/components/h1';
+import SearchForm from '@/components/search-form';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -10,14 +11,7 @@ export default function Home() {
         items-center
       "
     >
-      <h1
-        className="
-          text-3xl font-bold tracking-tight
-          lg:text-6xl
-        "
-      >
-        Find events around you
-      </h1>
+      <H1>Find events around you</H1>
       <p
         className="
           mb-12 mt-7
@@ -26,7 +20,7 @@ export default function Home() {
           lg:text-3xl
         "
       >
-        Browse more than{" "}
+        Browse more than{' '}
         <span
           className="
             font-bold text-accent
@@ -34,7 +28,7 @@ export default function Home() {
           "
         >
           10,000 events
-        </span>{" "}
+        </span>{' '}
         around you
       </p>
 
