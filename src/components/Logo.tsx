@@ -8,7 +8,14 @@ export default function Logo() {
         src="/logoEvento.png"
         alt="Evento logo"
         width={120}
-        height={100}
+        height={50}
+        quality={100}
+        priority
+        style={{
+          objectFit: 'contain',
+          width: 'auto',
+          height: 'auto'
+        }}
       />
     </Link>
   );
