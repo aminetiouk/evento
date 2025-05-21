@@ -1,4 +1,4 @@
-export type TEvent = {
+export type TEvents = {
   city: string;
   date: Date;
   description: string;
@@ -8,4 +8,16 @@ export type TEvent = {
   name: string;
   organizerName: string;
   slug: string;
+}
+
+export type TEvent = {
+  id: number;
+  name: string;
+  slug: string;
+  city: string;
+  date: Date;
+  description: string;
+  imageUrl: string;
+  location: string;
+  organizerName: string;
 }
