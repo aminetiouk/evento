@@ -1,10 +1,10 @@
-import { TEvent } from '@/lib/type';
+import { TEvents } from '@/lib/type';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 type EventCardProps = {
-  event: TEvent;
+  event: TEvents;
 };
 export default function EventCard({ event }: EventCardProps) {
   return (

@@ -1,8 +1,8 @@
-import { TEvent } from '@/lib/type';
+import { TEvents } from '@/lib/type';
 import EventCard from './event-card';
 
 type EventsListProps = {
-  events: TEvent[]
+  events: TEvents[]
 }
 export default function EventsList({ events }: EventsListProps) {
   return (
