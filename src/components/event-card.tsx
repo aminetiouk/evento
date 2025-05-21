@@ -14,7 +14,7 @@ export default function EventCard({ event }: EventCardProps) {
     >
       <section
         className="flex flex-col overflow-hidden w-full h-full bg-white/[3%] 
-        rounded-xl relative transition hover:scale-105 active:scale-[1.02]"
+        rounded-xl relative state-effects "
       >
         <Image
           alt={event.name}
