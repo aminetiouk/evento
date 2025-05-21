@@ -8,7 +8,10 @@
 }
 
 @utility flex-center {
-  @apply flex items-center justify-center
+  @apply flex items-center justify-center;
+}
+@utility state-effects {
+  @apply transition active:scale-[1.02] hover:scale-105 focus:scale-105;
 }
 
 /* SCROLLBAR STYLING */
