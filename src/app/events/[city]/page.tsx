@@ -3,18 +3,20 @@ import H1 from '@/components/h1';
 import { TEvents } from '@/lib/type';
 
 type EventsPageProps = {
-  params: {
+  params: Promise<{
     city: string;
-  };
+  }>;
 };
 
-export default async function events({ params }: EventsPageProps) {
-  const city = params.city;
+export default async function EventsPage({ params }: EventsPageProps) {
+  const { city } = await params;
   const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`
+    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`,
+    {
+      next: { revalidate: 3600 }
+    }
   );
   const events: TEvents[] = await response.json();
-
 
   return (
     <main className="flex flex-col items-center py-24 px-[20px]">
