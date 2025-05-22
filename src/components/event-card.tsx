@@ -22,6 +22,7 @@ export default function EventCard({ event }: EventCardProps) {
           width={500}
           height={280}
           quality={100}
+          style={{ width: 'auto', height: 'auto' }}
           priority
           className="object-cover h-[60%]"
         />
