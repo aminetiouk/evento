@@ -10,6 +10,14 @@ type Props = {
   };
 };
 
+export function generateMetadata({ params }: Props) {
+  const city = params.city;
+
+  return {
+    title: city === 'all' ? 'All Events' : `Events in ${capitalize(city)}`
+  };
+}
+
 export default async function EventsPage({ params }: Props) {
   const { city } = await params;
 
