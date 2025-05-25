@@ -2,14 +2,15 @@ import EventsList from '@/components/events-list';
 import H1 from '@/components/h1';
 import { Suspense } from 'react';
 import Loading from './loading';
+import { capitalize } from '@/lib/utils';
 
-type EventsPageProps = {
+type Props = {
   params: Promise<{
     city: string;
   }>;
 };
 
-export default async function EventsPage({ params }: EventsPageProps) {
+export default async function EventsPage({ params }: Props) {
   const { city } = await params;
 
   return (
@@ -17,7 +18,7 @@ export default async function EventsPage({ params }: EventsPageProps) {
       <H1 className="mb-28">
         {city === 'all' && 'All Events'}
         {city !== 'all' &&
-          `Events in ${city.charAt(0).toUpperCase() + city.slice(1)}`}
+          `Events in ${capitalize(city)}`}
       </H1>
       <Suspense fallback={<Loading />}>
         <EventsList city={city} />
