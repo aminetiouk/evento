@@ -8,7 +8,7 @@ export default async function EventsList({ city }: EventsListProps) {
   const response = await fetch(
       `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`,
       {
-        // next: { revalidate: 60 }
+        next: { revalidate: 60 }
       }
     );
     const events: TEvents[] = await response.json();
