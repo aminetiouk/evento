@@ -4,13 +4,13 @@ import { Suspense } from 'react';
 import Loading from './loading';
 import { capitalize } from '@/lib/utils';
 
-type Props = {
+type TProps = {
   params: {
     city: string;
   };
 };
 
-export function generateMetadata({ params }: Props) {
+export function generateMetadata({ params }: TProps) {
   const city = params.city;
 
   return {
@@ -18,7 +18,7 @@ export function generateMetadata({ params }: Props) {
   };
 }
 
-export default async function EventsPage({ params }: Props) {
+export default async function EventsPage({ params }: TProps) {
   const { city } = await params;
 
   return (
