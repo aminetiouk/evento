@@ -1,14 +1,23 @@
 import H1 from '@/components/h1';
 import { TEvent } from '@/lib/type';
+import { capitalize } from '@/lib/utils';
 import Image from 'next/image';
 
-type EventPageProps = {
+type TProps = {
   params: {
     slug: string;
   };
 };
 
-export default async function EventPage({ params }: EventPageProps) {
+export function generateMetadata({params}: TProps) {
+  const slug = params.slug;
+
+  return {
+    title: `Event ${capitalize(slug)}`
+  }
+}
+
+export default async function EventPage({ params }: TProps) {
   const slug = params.slug;
 
   const response = await fetch(
