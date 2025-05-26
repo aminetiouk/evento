@@ -1,5 +1,6 @@
 import H1 from '@/components/h1';
 import { TEvent } from '@/lib/type';
+import { getEventData } from '@/lib/utils';
 import { Metadata } from 'next';
 import Image from 'next/image';
 
@@ -12,9 +13,7 @@ type TProps = {
 export async function generateMetadata({params}: TProps): Promise<Metadata> {
   const slug = params.slug;
 
-  const response = await fetch(`https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`);
-
-  const event = await response.json();
+  const event = await getEventData(slug);
 
   return {
     title: event.name
@@ -23,14 +22,7 @@ export async function generateMetadata({params}: TProps): Promise<Metadata> {
 
 export default async function EventPage({ params }: TProps) {
   const slug = params.slug;
-
-  const response = await fetch(
-  `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`,
-  {
-    next: { revalidate: 60 }
-  }
-);
-  const event: TEvent = await response.json();
+  const event: TEvent = await getEventData(slug);
 
   return (
     <main>
