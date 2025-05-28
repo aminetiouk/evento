@@ -9,12 +9,12 @@ import cn from '@/lib/utils';
 const routes = [
   {
     name: 'Home',
-    path: '/',
+    path: '/'
   },
   {
     name: 'All Events',
-    path: '/events/all',
-  },
+    path: '/events/all'
+  }
 ];
 
 export default function Header() {
@@ -22,22 +22,29 @@ export default function Header() {
 
   return (
     <header className="flex h-14 px-3 border-b border-white/10 items-center justify-between sm:px-9">
-      <Logo />
-      
+      <Link href="/" className="hover:opacity-80 transition-opacity">
+        <Logo />
+      </Link>
+
       <nav className="h-full">
         <ul className="flex text-xl gap-x-6 h-full">
-          {routes.map((route) => (
+          {routes.map(route => (
             <li
               key={route.path}
               className={cn(
                 'transition relative flex items-center hover:text-white',
                 {
                   'text-white': activePathname === route.path,
-                  'text-white/50': activePathname !== route.path,
+                  'text-white/50': activePathname !== route.path
                 }
               )}
             >
-              <Link href={route.path}>{route.name}</Link>
+              <Link
+                href={route.path}
+                className="block h-full flex items-center"
+              >
+                {route.name}
+              </Link>
 
               {activePathname === route.path && (
                 <motion.div
