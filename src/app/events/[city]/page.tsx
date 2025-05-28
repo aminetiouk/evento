@@ -19,7 +19,7 @@ export function generateMetadata({ params }: TProps) {
 }
 
 export default async function EventsPage({ params }: TProps) {
-  const { city } = await params;
+  const { city } = params;
 
   return (
     <main className="flex flex-col items-center py-24 px-[20px]">
