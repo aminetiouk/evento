@@ -1,5 +1,4 @@
 import H1 from '@/components/h1';
-import { EventoEvent } from '@/generated/prisma';
 import { getEventData } from '@/lib/utils';
 import { Metadata } from 'next';
 import Image from 'next/image';
@@ -10,19 +9,19 @@ type TProps = {
   };
 };
 
-export async function generateMetadata({params}: TProps): Promise<Metadata> {
+export async function generateMetadata({ params }: TProps): Promise<Metadata> {
   const slug = params.slug;
 
   const event = await getEventData(slug);
 
   return {
     title: event.name
-  }
+  };
 }
 
 export default async function EventPage({ params }: TProps) {
   const slug = params.slug;
-  const event: EventoEvent = await getEventData(slug);
+  const event = await getEventData(slug);
 
   return (
     <main>
