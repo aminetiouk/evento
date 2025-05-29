@@ -19,7 +19,7 @@ export function capitalize(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export async function getEventsData(city: string) {
+export async function getEventsData(city: string, page = 1) {
   if( city !== 'all') return notFound();
 
   const events = await prisma.eventoEvent.findMany({
@@ -28,7 +28,9 @@ export async function getEventsData(city: string) {
     },
     orderBy: {
       date: 'asc'
-    }
+    },
+    take: 6,
+    skip: (page - 1) * 6
   });
 
   if (events.length === 0) return notFound();
