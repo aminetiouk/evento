@@ -8,6 +8,8 @@ type EventsListProps = {
 };
 export default async function EventsList({ city, page }: EventsListProps) {
   const events = await getEventsData(city, page);
+  const prevPage = `/events/${city}?page=${page - 1}`;
+  const nextPage = `/events/${city}?page=${page + 1}`;
 
   return (
     <section className="max-w-[1100px] flex flex-wrap gap-10 justify-center px-[20px]">
@@ -15,7 +17,7 @@ export default async function EventsList({ city, page }: EventsListProps) {
         <EventCard key={event.id} event={event} />
       ))}
 
-      <PaginationControls />
+      <PaginationControls prevPage={prevPage} nextPage={nextPage} />
     </section>
   );
 }
