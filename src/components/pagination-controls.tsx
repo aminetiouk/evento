@@ -5,10 +5,15 @@ import React from 'react';
 const btnStyles =
   'flex justify-center gap-x-2 text-white/50 text-lg rounded-md items-center bg-white/10 px-4 py-2 ';
 
-export default function PaginationControls() {
+type TPaginationProps = {
+  prevPage: string;
+  nextPage: string;
+}
+
+export default function PaginationControls({prevPage, nextPage}: TPaginationProps) {
   return (
     <section className="flex justify-between  w-full">
-      <Link href="/events/all?page=2" className={btnStyles}>
+      <Link href={prevPage} className={btnStyles}>
         <Image
           src="/arrow-left.svg"
           alt="Previous page arrow"
@@ -18,7 +23,7 @@ export default function PaginationControls() {
         />
         Previous
       </Link>
-      <Link href="/events/all?page=1" className={btnStyles}>
+      <Link href={nextPage} className={btnStyles}>
         Next
         <Image
           src="/arrow-right.svg"
