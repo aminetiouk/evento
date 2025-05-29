@@ -10,6 +10,11 @@ type TProps = {
   };
 };
 
+type TEventsPageProps = TProps & {
+  searchParams: { [key: string]: string | string[] | undefined};
+}
+
+
 export function generateMetadata({ params }: TProps) {
   const city = params.city;
 
@@ -18,8 +23,9 @@ export function generateMetadata({ params }: TProps) {
   };
 }
 
-export default async function EventsPage({ params }: TProps) {
+export default async function EventsPage({ params, searchParams }: TEventsPageProps) {
   const { city } = params;
+  const page = searchParams.page || 1;
 
   return (
     <main className="flex flex-col items-center py-24 px-[20px]">
@@ -28,7 +34,7 @@ export default async function EventsPage({ params }: TProps) {
         {city !== 'all' && `Events in ${capitalize(city)}`}
       </H1>
       <Suspense fallback={<Loading />}>
-        <EventsList city={city} />
+        <EventsList city={city} page={+page} />
       </Suspense>
     </main>
   );
