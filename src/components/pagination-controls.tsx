@@ -8,31 +8,40 @@ const btnStyles =
 type TPaginationProps = {
   prevPage: string;
   nextPage: string;
-}
+};
 
-export default function PaginationControls({prevPage, nextPage}: TPaginationProps) {
+export default function PaginationControls({
+  prevPage,
+  nextPage
+}: TPaginationProps) {
   return (
     <section className="flex justify-between  w-full">
-      <Link href={prevPage} className={btnStyles}>
-        <Image
-          src="/arrow-left.svg"
-          alt="Previous page arrow"
-          width={12}
-          height={12}
-          className="opacity-50"
-        />
-        Previous
-      </Link>
-      <Link href={nextPage} className={btnStyles}>
-        Next
-        <Image
-          src="/arrow-right.svg"
-          alt="Next page arrow"
-          width={12}
-          height={12}
-          className="opacity-50"
-        />
-      </Link>
+      {prevPage ? (
+        <Link href={prevPage} className={btnStyles}>
+          <Image
+            src="/arrow-left.svg"
+            alt="Previous page arrow"
+            width={12}
+            height={12}
+            className="opacity-50"
+          />
+          Previous
+        </Link>
+      ) : (
+        <div />
+      )}
+      {nextPage && (
+        <Link href={nextPage} className={btnStyles}>
+          Next
+          <Image
+            src="/arrow-right.svg"
+            alt="Next page arrow"
+            width={12}
+            height={12}
+            className="opacity-50"
+          />
+        </Link>
+      )}
     </section>
   );
 }
