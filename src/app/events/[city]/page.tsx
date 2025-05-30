@@ -3,6 +3,8 @@ import H1 from '@/components/h1';
 import { Suspense } from 'react';
 import Loading from './loading';
 import { capitalize } from '@/lib/utils';
+import { z } from 'zod';
+import { notFound } from 'next/navigation';
 
 type TProps = {
   params: {
@@ -22,12 +24,17 @@ export function generateMetadata({ params }: TProps) {
   };
 }
 
+const pageNumberSchema = z.coerce.number().int().positive().optional();
+
 export default async function EventsPage({
   params,
   searchParams
 }: TEventsPageProps) {
   const { city } = params;
-  const page = searchParams.page || 1;
+  const parsePage = pageNumberSchema.safeParse(searchParams.page);
+  if (!parsePage.success) {
+    return notFound();
+  }
 
   return (
     <main className="flex flex-col items-center py-24 px-[20px]">
@@ -35,8 +42,8 @@ export default async function EventsPage({
         {city === 'all' && 'All Events'}
         {city !== 'all' && `Events in ${capitalize(city)}`}
       </H1>
-      <Suspense key={city + page} fallback={<Loading />}>
-        <EventsList city={city} page={+page} />
+      <Suspense key={city + parsePage} fallback={<Loading />}>
+        <EventsList city={city} page={parsePage.data} />
       </Suspense>
     </main>
   );
