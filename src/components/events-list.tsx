@@ -6,10 +6,12 @@ type EventsListProps = {
   city: string;
   page: number;
 };
+
 export default async function EventsList({ city, page }: EventsListProps) {
-  const events = await getEventsData(city, page);
-  const prevPage = `/events/${city}?page=${page - 1}`;
-  const nextPage = `/events/${city}?page=${page + 1}`;
+  const { totalPages, events } = await getEventsData(city, page);
+
+  const prevPage = page > 1 ? `/events/${city}?page=${page - 1}` : '';
+  const nextPage = page < totalPages ? `/events/${city}?page=${page + 1}` : '';
 
   return (
     <section className="max-w-[1100px] flex flex-wrap gap-10 justify-center px-[20px]">
