@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import prisma from "./db";
 import { capitalize } from "./utils";
 
-export const getEvents = unstable_cache(async (city: string, page = 1) => {
+export const getEventsData = unstable_cache(async (city: string, page = 1) => {
   const events = await prisma.eventoEvent.findMany({
     where: {
       city: city === "all" ? undefined : capitalize(city),
@@ -33,7 +33,7 @@ export const getEvents = unstable_cache(async (city: string, page = 1) => {
   };
 });
 
-export const getEvent = unstable_cache(async (slug: string) => {
+export const getEventData = unstable_cache(async (slug: string) => {
   const event = await prisma.eventoEvent.findUnique({
     where: {
       slug: slug,
