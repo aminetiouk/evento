@@ -53,7 +53,7 @@ export default function Header() {
             >
               <Link
                 href={route.path}
-                className="block h-full flex items-center"
+                className="h-full flex items-center"
               >
                 {route.name}
               </Link>
