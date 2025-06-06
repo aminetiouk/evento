@@ -1,7 +1,7 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
-import Logo from './logo';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import cn from '@/lib/utils';
@@ -23,7 +23,19 @@ export default function Header() {
   return (
     <header className="flex h-14 px-3 border-b border-white/10 items-center justify-between sm:px-9">
       <Link href="/" className="hover:opacity-80 transition-opacity">
-        <Logo />
+        <Image
+              src="/logoEvento.png"
+              alt="Evento logo"
+              width={120}
+              height={50}
+              quality={100}
+              priority
+              style={{
+                objectFit: 'contain',
+                width: 'auto',
+                height: 'auto'
+              }}
+            />
       </Link>
 
       <nav className="h-full">
