@@ -3,14 +3,16 @@ import { getEventData } from '@/lib/server-utils';
 import { Metadata } from 'next';
 import Image from 'next/image';
 
-type TProps = {
-  params: {
+type Props = {
+  params: Promise<{
     slug: string;
-  };
+  }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export async function generateMetadata({ params }: TProps): Promise<Metadata> {
-  const slug = params.slug;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+
   const event = await getEventData(slug);
 
   return {
@@ -18,8 +20,8 @@ export async function generateMetadata({ params }: TProps): Promise<Metadata> {
   };
 }
 
-export default async function EventPage({ params }: TProps) {
-  const slug = params.slug;
+export default async function EventPage({ params }: Props) {
+  const { slug } = await params;
   const event = await getEventData(slug);
 
   return (
